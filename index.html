@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>CLAYFACE — Invitación de Sebitas para Vivi</title>
+  <meta name="description" content="Vivi, Sebitas te invita a ver Clayface el 30/10/2026 a las 20:00 en Cineplanet Salaverry, Lima." />
+  <meta name="theme-color" content="#070101" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Syne:wght@500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise" aria-hidden="true"></div>
+  <canvas id="drip-canvas" aria-hidden="true"></canvas>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- GATE -->
+  <div id="gate" class="gate">
+    <button type="button" class="gate__btn" id="enter-btn" aria-label="Abrir invitación">
+      <span class="gate__eyebrow">Para Vivi, de Sebitas</span>
+      <span class="gate__title">ÁBREME</span>
+      <span class="gate__hint">toca para ver la invitación</span>
+    </button>
+  </div>
+
+  <main id="invite" class="invite" hidden>
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="hero__atmosphere" aria-hidden="true">
+        <div class="hero__blob hero__blob--1"></div>
+        <div class="hero__blob hero__blob--2"></div>
+        <div class="hero__blob hero__blob--3"></div>
+        <div class="hero__melt"></div>
+        <svg class="hero__visage" viewBox="0 0 400 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="skin" x1="80" y1="40" x2="320" y2="480" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#d4a574" stop-opacity="0.55"/>
+              <stop offset="0.45" stop-color="#9a6b3a" stop-opacity="0.4"/>
+              <stop offset="1" stop-color="#8f0e12" stop-opacity="0.65"/>
+            </linearGradient>
+            <filter id="goo">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/>
+              <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 22 -10" result="goo"/>
+              <feBlend in="SourceGraphic" in2="goo"/>
+            </filter>
+          </defs>
+          <g filter="url(#goo)" opacity="0.9">
+            <path fill="url(#skin)" d="M200 36c72 0 128 58 128 138 0 42-14 78-28 112-10 24-8 48 6 78 18 40 34 78 18 118-22 54-78 70-124 70s-102-16-124-70c-16-40 0-78 18-118 14-30 16-54 6-78-14-34-28-70-28-112C66 94 122 36 200 36Z"/>
+            <ellipse cx="148" cy="168" rx="22" ry="14" fill="#070101" opacity="0.75"/>
+            <ellipse cx="252" cy="168" rx="18" ry="28" fill="#f0e6d4" opacity="0.35"/>
+            <path d="M160 250c28 36 56 40 88 8" stroke="#070101" stroke-width="10" stroke-linecap="round" opacity="0.55"/>
+            <path class="hero__visage-drip" d="M120 300c8 40 4 90 10 140" stroke="#9a6b3a" stroke-width="16" stroke-linecap="round"/>
+            <path class="hero__visage-drip" d="M200 320c2 50-6 110 4 160" stroke="#8f0e12" stroke-width="22" stroke-linecap="round"/>
+            <path class="hero__visage-drip" d="M270 290c-4 48 8 100 2 150" stroke="#c9b84a" stroke-width="12" stroke-linecap="round" opacity="0.7"/>
+            <circle cx="124" cy="460" r="14" fill="#9a6b3a"/>
+            <circle cx="206" cy="500" r="18" fill="#8f0e12"/>
+            <circle cx="274" cy="455" r="10" fill="#c9b84a" opacity="0.8"/>
+          </g>
+        </svg>
+      </div>
+
+      <header class="hero__top">
+        <p class="hero__for">Para <em>Vivi</em></p>
+        <p class="hero__stamp">30/10/2026 · 8:00 pm</p>
+      </header>
+
+      <div class="hero__brand">
+        <p class="hero__present">
+          Te invita <strong>Sebitas</strong>,<br />
+          <span>tu mayor admirador</span>
+        </p>
+        <h1 class="hero__title" data-text="CLAYFACE">
+          <span class="hero__title-layer hero__title-layer--shadow" aria-hidden="true">CLAYFACE</span>
+          <span class="hero__title-layer hero__title-layer--drip" aria-hidden="true">CLAYFACE</span>
+          <span class="hero__title-layer hero__title-layer--main">CLAYFACE</span>
+        </h1>
+        <p class="hero__tagline">
+          Una película de terror. ¿Me acompañas al cine?
+        </p>
+      </div>
+
+      <div class="hero__cta-group">
+        <a class="btn btn--primary" href="#detalles">Ver cuándo y dónde</a>
+        <button type="button" class="btn btn--ghost" id="accept-btn">¡Sí, voy!</button>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span></span>
+      </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section class="details" id="detalles">
+      <div class="details__glow" aria-hidden="true"></div>
+      <p class="section-label">La cita</p>
+      <h2 class="details__headline">
+        Vivi,<br />
+        <span>vamos al cine el 30.</span>
+      </h2>
+      <p class="details__lead">
+        Quiero verte e ir juntos a ver <strong>Clayface</strong> el
+        <strong>30/10/2026</strong> a las 8:00 pm: una película de terror
+        (sí, de las que asustan de verdad). No hace falta que sepas de qué va —
+        solo ven, siéntate a mi lado y gritemos juntos.
+      </p>
+
+      <dl class="meta">
+        <div class="meta__item" data-reveal>
+          <dt>Película</dt>
+          <dd>Clayface</dd>
+        </div>
+        <div class="meta__item" data-reveal>
+          <dt>Fecha</dt>
+          <dd>30/10/2026<br /><span>8:00 pm</span></dd>
+        </div>
+        <div class="meta__item" data-reveal>
+          <dt>Cine</dt>
+          <dd>Cineplanet Salaverry<br /><span>Lima, Perú</span></dd>
+        </div>
+        <div class="meta__item" data-reveal>
+          <dt>Te invita</dt>
+          <dd>Sebitas<br /><span>tu mayor admirador</span></dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- WHAT IS IT -->
+    <section class="manifesto" id="manifiesto">
+      <div class="manifesto__frame" data-reveal>
+        <p class="section-label">¿De qué va?</p>
+        <p class="manifesto__quote">
+          Es una película de terror sobre un hombre al que le pasa algo horrible
+          con su cara… y todo se vuelve monstruoso.
+        </p>
+        <p class="manifesto__aside">Sin spoilers. Solo sustos, palomitas y tu compañía.</p>
+      </div>
+      <ul class="manifesto__traits">
+        <li data-reveal><span>01</span> Género: terror</li>
+        <li data-reveal><span>02</span> Plan: cine contigo</li>
+        <li data-reveal><span>03</span> Invitador: Sebitas</li>
+      </ul>
+    </section>
+
+    <!-- TICKET -->
+    <section class="ticket" id="entrada">
+      <article class="ticket__card" data-reveal>
+        <div class="ticket__perforation" aria-hidden="true"></div>
+        <div class="ticket__left">
+          <p class="ticket__cinema">Cineplanet Salaverry</p>
+          <h3 class="ticket__film">CLAYFACE</h3>
+          <p class="ticket__guest">Invitada: <strong>Vivi</strong></p>
+          <p class="ticket__from">De: <strong>Sebitas</strong></p>
+        </div>
+        <div class="ticket__right">
+          <p class="ticket__when"><span>30/10/2026</span> 8:00 pm</p>
+          <p class="ticket__where">Salaverry · Lima</p>
+          <p class="ticket__code" id="ticket-code">CF–VIVI–20</p>
+        </div>
+      </article>
+      <p class="ticket__note">Llega un poquito antes. Yo te espero en la entrada.</p>
+    </section>
+
+    <!-- FINAL -->
+    <section class="finale" id="finale">
+      <div class="finale__inner">
+        <p class="finale__whisper">Con cariño (y un poco de miedo)</p>
+        <h2 class="finale__title">
+          Nos vemos en el cine,<br />
+          <em>Vivi</em>.
+        </h2>
+        <p class="finale__from">— Sebitas, tu mayor admirador</p>
+        <button type="button" class="btn btn--primary btn--lg" id="seal-btn">
+          Confirmar que voy
+        </button>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Sebitas ♥ Vivi · Clayface · 30/10/2026 · 8:00 pm · Cineplanet Salaverry</p>
+    </footer>
+  </main>
+
+  <!-- ACCEPT MODAL -->
+  <div class="modal" id="modal" hidden>
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <button type="button" class="modal__close" data-close aria-label="Cerrar">×</button>
+      <p class="modal__eyebrow">¡Confirmado!</p>
+      <h2 id="modal-title" class="modal__title">Sebitas ya está feliz.</h2>
+      <p class="modal__body">
+        Vivi, te espero el <strong>30/10/2026</strong> a las <strong>8:00 pm</strong> en
+        <strong>Cineplanet Salaverry</strong> para ver Clayface juntos.
+      </p>
+      <p class="modal__sign">— Sebitas, tu mayor admirador</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
